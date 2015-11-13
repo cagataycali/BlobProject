@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>SistemAyar</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Anasayfadakifotografsayisi</th>
+                <td>{{ entity.anaSayfadakiFotografSayisi }}</td>
+            </tr>
+            <tr>
+                <th>Kaydirincagelecekfotografsayisi</th>
+                <td>{{ entity.kaydirincaGelecekFotografSayisi }}</td>
+            </tr>
+            <tr>
+                <th>Temarenk</th>
+                <td>{{ entity.temaRenk }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_sistem-ayar_') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_sistem-ayar__edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+yorum_yap:
+    path:     /yorum/
+    defaults: { _controller: BlobCoreClientBundle:Yorum:yorumYap }
+    options:
+            expose: true
+
+
+yorum_sil:
+    path:     /yorum/sil
+    defaults: { _controller: BlobCoreClientBundle:Yorum:yorumSil }
+    options:
+            expose: true

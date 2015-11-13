@@ -1,0 +1,12 @@
+takip:
+    path:     /
+    defaults: { _controller: BlobCoreClientBundle:Takip:takip }
+    options:
+            expose: true
+
+takip_onay:
+    path:     /takip-onay
+    defaults: { _controller: BlobCoreClientBundle:Takip:takipOnay }
+    options:
+            expose: true
+

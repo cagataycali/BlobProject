@@ -1,0 +1,22 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: null
+    database_name: blob
+    database_user: root
+    database_password: root
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: user@user.com
+    mailer_password: pass
+    encryption: ssl
+    locale: tr
+    secret: secret
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: false
+    project_url: 'http://localhost/blob'
+    project_dir: /Applications/MAMP/htdocs/blob
+
+
+

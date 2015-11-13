@@ -1,0 +1,125 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Blob!{% endblock %}
+
+{% block body %}
+    <section class="section swatch-{{ ayar.temaRenk|default('white-red') }} has-top">
+        <div class="decor-top">
+            <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 L50 100 L100 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container main">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <article class="post post-showinfo ">
+                            <div class="post-media overlay">
+                                <a class="feature-image hover-animate img-responsive">
+                                    <img src="{{ f.url }}">
+                                    <i style="color: #d12b31;;" class="fa fa-heart heart_like_{{ f.hash }}"> {{ f.begeniler|length }}</i>
+                                </a>
+                            </div>
+                            <div class="post-head ">
+                                <small class="post-body">
+                                    <b class="post-author"> <a href="{{ path('profil_detay',{'username':f.kullanici }) }}">{{ f.kullanici }}</a></b> &nbsp;&nbsp; {{ f.icerik }}
+                                </small>
+                                <small class="post-date pull-right">
+                                    <a >{{ f.createdAt|ago }}</a>
+                                </small>
+                            </div>
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        <a>
+                                            <i id="{{ f.hash }}" style="color: #93151a" class="fa {% for kimlik in f.begeniler|keys %}fa-heart{% else %}fa-heart-o{% endfor %} fa-4x like faa-pulse animated-hover"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a data-toggle="collapse" href="#comment_{{ f.hash }}">
+                                            <i style="color: #93151a" class="fa fa-comment{{ f.yorumlar|length > 0 ? "":"-o"}} fa-4x faa-burst animated-hover"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                        </article>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-collapse collapse" id="comment_{{ f.hash }}" style="height: 0px;">
+                                    <div class="panel-body">
+                                        <div class="comments padded post-showinfo" id="comments">
+                                            <ul class="comments-list comments-body media-list" id="comment_box_{{ f.hash }}">
+                                                {% for y in f.yorumlar|reverse if y|length > 0 %}
+                                                    <li class="media media-comment">
+                                                        <div class="media-body">
+                                                            <div class="media-inner" id="yorum_div_{{ y.id }}">
+                                                                <p>
+                                                                    <b class="post-author"> <a href="{{ path('profil_detay',{'username':y.kullanici }) }}">{{ y.kullanici }}</a></b>
+                                                                    {{ y.yorum }}
+                                                                    <i class="pull-right">{{ y.createdAt|ago }}</i>
+                                                                    {% if y.kullanici == app.user %}
+                                                                        <i id="yorum_{{ y.id }}" class="fa fa-trash yorum_sil pull-right"></i>
+                                                                    {% endif %}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                {% else %}
+                                                    <i style="color:deepskyblue;" class="dutluk"> &nbsp; Eskiden buralar dutluktu!</i>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        {# Giriş yapan kullanıcı fotoğrafın sahibiyse #}
+                                        <hr>
+                                        {# Yorumla kutusu #}
+                                        <div class="form-group form-icon-group">
+                                            <form method="post" id="form_{{ f.hash }}" onsubmit="return false;">
+
+                                                <textarea class="form-control yorum_field" name="yorum" placeholder="Mesajınız *" maxlength="140" rows="2" data-parsley-range="[5, 140]" data-parsley-required="required"></textarea>
+
+                                                <input type="submit" name="yorumla" value="Yorumla" style="float: right" class="btn btn-info btn-block yorum" id="{{ f.hash }}" data-parsley-required="required">
+
+                                                <input type="hidden" name="hash" value="{{ f.hash }}">
+
+                                            </form>
+                                        </div>
+                                        {# Yorumla kutusu #}
+                                    </div>
+                                    {% if f.kullanici == app.user %}
+                                        <div class="panel-footer">
+                                            <div class="row">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4 sil" id="{{ f.hash }}"><i class="fa fa-trash"></i> Fotoğrafı kaldır</div>
+                                                <div class="col-md-4"></div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="box-round box-big" id="more" style="display: none">
+                <div class="box-dummy"></div>
+                        <span class="box-inner">
+                            <img alt="Yükleniyor" class="img-circle" src="{{ asset('assets/images/design/custom-icons/custom-icon-clock.png') }}">
+                        </span>
+            </div>
+        </div>
+        <div class="box-round box-big" id="no-more" style="display: none">
+            <div class="box-dummy"></div>
+                        <span class="box-inner">
+                            <img alt="Başka sonuç mevcut değil.." class="img-circle" src="{{ asset('assets/images/design/custom-icons/custom-icon-basket.png') }}">
+                        </span>
+        </div>
+        </div>
+    </section>
+{% endblock body %}
+
+{% block javascript %}
+    <script>
+
+    </script>
+{% endblock javascript %}

@@ -1,0 +1,12 @@
+parameters:
+    blob_core_library.activity_listener.class: Blob\Core\LibraryBundle\EventListener\ActivityListener # Kimler aktif
+
+# Service
+services:
+    bildirim:
+        class:  Blob\Core\ServiceBundle\Controller\Bildirim
+        arguments: [%apns_server%, %passphrase%, %pem%, %gcm_url%, %project_id%, %api_key%]
+
+    bildirim_gonder:
+        class:  Blob\Core\ServiceBundle\Controller\BildirimGonder
+        arguments: ['%kime%',%sablon%,%fotograf%,%kim%,%em%]

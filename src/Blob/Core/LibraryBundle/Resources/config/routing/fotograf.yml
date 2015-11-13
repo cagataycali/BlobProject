@@ -1,0 +1,30 @@
+admin_fotograf_:
+    path:     /
+    defaults: { _controller: "BlobCoreLibraryBundle:Fotograf:index" }
+
+admin_fotograf__show:
+    path:     /{id}/show
+    defaults: { _controller: "BlobCoreLibraryBundle:Fotograf:show" }
+
+admin_fotograf__new:
+    path:     /new
+    defaults: { _controller: "BlobCoreLibraryBundle:Fotograf:new" }
+
+admin_fotograf__create:
+    path:     /create
+    defaults: { _controller: "BlobCoreLibraryBundle:Fotograf:create" }
+    methods:  POST
+
+admin_fotograf__edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BlobCoreLibraryBundle:Fotograf:edit" }
+
+admin_fotograf__update:
+    path:     /{id}/update
+    defaults: { _controller: "BlobCoreLibraryBundle:Fotograf:update" }
+    methods:  [POST, PUT]
+
+admin_fotograf__delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BlobCoreLibraryBundle:Fotograf:delete" }
+    methods:  [POST, DELETE]

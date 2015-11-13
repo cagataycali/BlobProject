@@ -1,0 +1,4 @@
+services:
+#    blob_core_client.example:
+#        class: Blob\Core\ClientBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

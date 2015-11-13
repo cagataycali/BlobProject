@@ -1,0 +1,13 @@
+/**
+ * Bildirimi göndereceğimiz servis!
+ */
+$guvercin = $this->container->get('bildirim_gonder');
+
+
+/**
+ * Yeni fotoğraf 5. şablona girdiği için şablon nesnesini bulalım
+ */
+$sablon = $em -> getRepository( 'BlobCoreLibraryBundle:BildirimSablon' ) -> find(5);
+
+
+$guvercin->bildirimGonder($kimlik,$fotograf->getKullanici(),$sablon,$fotograf,$em);

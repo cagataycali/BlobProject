@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<section class="section swatch-{{ ayar.temaRenk|default('white-red') }} has-top">
+    <div class="decor-top">
+        <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0 L50 100 L100 0 L100 100 L0 100" stroke-width="0"></path>
+        </svg>
+    </div>
+    <div class="container main">
+    <h1>Fotograf list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Hash</th>
+                <th>Icerik</th>
+                <th>Sahip</th>
+                <th>Createdat</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_fotograf__show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.url }}</td>
+                <td>{{ entity.hash }}</td>
+                <td>{{ entity.icerik }}</td>
+                <td>{{ entity.kullanici }}</td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_fotograf__show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_fotograf__edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('admin_fotograf__new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+        </div>
+</section>
+    {% endblock %}

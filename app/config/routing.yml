@@ -1,0 +1,23 @@
+blob_core_library:
+    resource: "@BlobCoreLibraryBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+blob_core_service:
+    resource: "@BlobCoreServiceBundle/Resources/config/routing.yml"
+    prefix:   /service/
+
+blob_core_client:
+    resource: "@BlobCoreClientBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+#Fos user bundle main routing
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+#Fos Js Routing bundle main routing
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

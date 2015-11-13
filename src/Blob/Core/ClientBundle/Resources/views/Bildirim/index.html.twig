@@ -1,0 +1,132 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Blob!{% endblock %}
+
+{% block css %}
+    <style type="text/css">
+        .material-switch > input[type="checkbox"] {
+            display: none;
+        }
+
+        .material-switch > label {
+            cursor: pointer;
+            height: 0px;
+            position: relative;
+            width: 40px;
+        }
+
+        .material-switch > label::before {
+            background: rgb(0, 0, 0);
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            content: '';
+            height: 16px;
+            margin-top: -8px;
+            position:absolute;
+            opacity: 0.3;
+            transition: all 0.4s ease-in-out;
+            width: 40px;
+        }
+        .material-switch > label::after {
+            background: rgb(255, 255, 255);
+            border-radius: 16px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            content: '';
+            height: 24px;
+            left: -4px;
+            margin-top: -8px;
+            position: absolute;
+            top: -4px;
+            transition: all 0.3s ease-in-out;
+            width: 24px;
+        }
+        .material-switch > input[type="checkbox"]:checked + label::before {
+            background: inherit;
+            opacity: 0.5;
+        }
+        .material-switch > input[type="checkbox"]:checked + label::after {
+            background: inherit;
+            left: 20px;
+        }
+    </style>
+{% endblock css %}
+
+{% block body %}
+    <section class="section swatch-beige-black has-top">
+        <div class="decor-top">
+            <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 C50 100 50 100 100 0  L100 100 0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <header class="section-header underline">
+                <h1 class="headline super hairline">{{ app.user.username }}</h1>
+                <p class="big">{{ app.user.profil.aciklama|default('') }}</p>
+                <small>{{ app.user.profil.webAdresi|default('') }}</small>
+            </header>
+        </div>
+    </section>
+
+    <section class="section swatch-black-beige has-top">
+        <div class="decor-top">
+            <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 L50 100 L100 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container main">
+            <div class="container">
+                <div class="row ayarlar">
+                    <div class="col-lg-3 col-sm-12 col-xs-12">
+                        {#{{ app.user.ayar.bildirimler == null or app.user.ayar.bildirimler == 0 ? "Bildirimleriniz kapalı":"Bildirimleriniz açık!" }}#}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                                    <div class="panel panel-default">
+                                        <!-- Default panel contents -->
+                                        <div class="panel-heading"><span style="color: {% if app.user.bildirimler|length > 0 and app.user.bildirimler|last.durum == 0 %}darkred{% else %}#000{% endif %};" class="fa fa-{% if app.user.bildirimler|length > 0 and app.user.bildirimler|last.durum == 0 %}bell animated{% else %}bell-o animated-hover{% endif %} faa-ring "></span> Bildirimler</div>
+
+                                        <button class="btn btn-success btn-rounded btn-block tumunu_gor"><i class="fa fa-eye tumunu_gor"></i> Tümünü gör!</button>
+                                        <!-- List group -->
+                                        <ul class="list-group tum_bildirimler">
+
+                                            {% for b in app.user.bildirimler|reverse if b.durum == 0 %} {# Bildirimlerin görülmemiş olanlarını #}
+
+                                                <li class="list-group-item" id="li_{{ b.id }}">
+                                                    <div class="alert alert-{% if b.sablon.tur.id == 1  %}info{% elseif b.sablon.tur.id == 2   %}success{% else %}warning{% endif %}">
+                                                        <button id="{{ b.id }}" class="close closer" name="{{ b.id }}" data-dismiss="alert" type="button">×</button>
+                                                        <strong>{{ b.sablon.tur }}</strong>
+
+                                                        <i class="fa fa-p">
+                                                            <a href="{{ path('profil_detay',{'username':b.kim.username}) }}">{{ b.kim.username  }}</a>
+
+                                                            {% if b.sablon.tur.id == 2 %} {# takip ile ilgili durumlarda kullanıcı id 'değerinde link olacak #}
+                                                                <a href="{{ path('fotograf-detay',{'hash':b.neyi.hash}) }}">
+                                                                    {{ b.sablon.icerik }}
+                                                                </a>
+                                                            {% else %}
+                                                            {{ b.sablon.icerik }}
+                                                            {% endif %}
+
+                                                        </i>
+
+                                                        {% if b.sablon.id == 2 %} {# Seni takip etmek istiyor :) #}
+                                                            <div class="material-switch pull-right">
+                                                                <input id="bildirim_{{ b.id }}" value="{{ b.id }}" name="{{ b.kim.username }}" type="checkbox" class="onay"/>
+                                                                <label for="bildirim_{{ b.id }}" class="label-info"></label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}

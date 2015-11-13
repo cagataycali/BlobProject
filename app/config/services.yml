@@ -1,0 +1,7 @@
+services:
+    blob_core_library.activity_listener: # Kimler aktif
+            class: %blob_core_library.activity_listener.class%
+            arguments: [@security.context, @fos_user.user_manager]
+            tags:
+                - { name: kernel.event_listener, event: kernel.controller, method: onCoreController } ## Last activity
+            lazy: true

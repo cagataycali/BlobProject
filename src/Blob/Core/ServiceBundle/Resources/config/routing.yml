@@ -1,0 +1,3 @@
+blob_core_service_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BlobCoreServiceBundle:Default:index }

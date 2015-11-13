@@ -1,0 +1,120 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Blob!{% endblock %}
+
+{% block body %}
+    <section class="section swatch-beige-black has-top">
+        <div class="decor-top">
+            <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 C50 100 50 100 100 0  L100 100 0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <header class="section-header underline">
+                <h1 class="headline super hairline kullanici_adi" id="{{ kullanici.username }}">{{ kullanici.username }}</h1>
+                <p class="big">{{ kullanici.profil.aciklama|default('') }}</p>
+                <small>{{ kullanici.profil.webAdresi|default('') }}</small>
+                {% if kullanici != current %}
+                    {% if takip_durum == 2 %} {# Henüz onaylanmamış bir takip isteği #}
+                        <small> <button class="btn btn-info takip" id="{{ kullanici.username }}"> Takip onayı bekliyor</button></small>
+                    {% elseif takip_durum == 0%}
+                        <small> <button class="btn btn-primary takip" id="{{ kullanici.username }}"> Takip et</button></small>
+                    {% else %}
+                        <small> <button class="btn btn-success takip" id="{{ kullanici.username }}"> Takip ediyorsun</button></small>
+                    {% endif %}
+                {% endif %}
+            </header>
+        </div>
+    </section>
+
+    <section class="section swatch-black-beige has-top">
+        <div class="decor-top">
+            <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 L50 100 L100 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container main">
+            <div class="container">
+                <div class="row fotograflar">
+                    {% for f in kullanici_fotograflari if takip_durum == 1 or f.kullanici == app.user  %}
+                        <div class="col-lg-3 col-sm-4 col-xs-6">
+                            <a title="{{ f.icerik }}" href="{{ path('fotograf-detay',{'hash':f.hash}) }}">
+                                <img class="thumbnail img-responsive" src="{{ f.url }}">
+                            </a>
+                        </div>
+                        {% else %}
+                        <h2 class="text-center">Kullanıcıyı takip etmediğiniz için fotoğraflarını görüntüleyemezsiniz.</h2>
+                    {% endfor %}
+                </div>
+                <div class="box-round box-big" id="more" style="display: none">
+                    <div class="box-dummy"></div>
+                        <span class="box-inner">
+                            <img alt="Yükleniyor" class="img-circle" src="{{ asset('assets/images/design/custom-icons/custom-icon-clock.png') }}">
+                        </span>
+                </div>
+            </div>
+            <div class="box-round box-big" id="no-more" style="display: none">
+                <div class="box-dummy"></div>
+                        <span class="box-inner">
+                            <img alt="Başka sonuç mevcut değil.." class="img-circle" src="{{ asset('assets/images/design/custom-icons/custom-icon-basket.png') }}">
+                        </span>
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function(){
+            /**
+             * İkinci sayfadan itibaren çekeceğiz.
+             * @type {number}
+             */
+            var page = 2;
+            var total = {{ kullanici_fotograflari.getTotalItemCount }};
+            var itemsPerPage = {{ kullanici_fotograflari.getItemNumberPerPage }};
+            var kullanici_adi = $('.kullanici_adi').attr('id');
+
+            $(window).scroll(function ()
+            {
+
+                if($(window).scrollTop() + $(window).height() == $(document).height())
+                {
+
+                    var data =
+                    {
+                        "page": page++,
+                        "kullanici": kullanici_adi
+                    };
+
+                    console.log(data);
+
+                    if((page-1)* itemsPerPage > total)
+                    {
+                        $('#no-more').fadeIn("slow");
+
+                    }
+                    else
+                    {
+                        $('#more').fadeIn("slow");
+
+                        $.ajax({
+                            type: "POST",
+                            url: Routing.generate('profil_sonsuz_kaydirma'),
+                            async: true,
+                            data:data,
+                            success: function(data) {
+                                $('#more').fadeOut("slow");
+                                $('.main').fadeIn("slow").append(data);
+                            }
+                        });
+
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock javascript %}
+

@@ -1,0 +1,5 @@
+arama:
+    path:     /
+    defaults: { _controller: BlobCoreClientBundle:Arama:arama }
+    options:
+            expose: true

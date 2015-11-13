@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>SistemAyar list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Anasayfadaki fotograf sayisi</th>
+                <th>Kaydirinca gelecek fotografsayisi</th>
+                <th>Tema renk</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_sistem-ayar__show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.anaSayfadakiFotografSayisi }}</td>
+                <td>{{ entity.kaydirincaGelecekFotografSayisi }}</td>
+                <td>{{ entity.temaRenk }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_sistem-ayar__show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_sistem-ayar__edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('admin_sistem-ayar__new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Blob!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="content">
+        <div class="grid ">
+            <figure class="effect-zoe">
+                <img src="http://localhost/angle/icons/custom-icon-scissors.png" alt="img25" class="img-responsive">
+                <figcaption>
+                    <h2>Creative <span>Zoe</span></h2>
+                    <p class="icon-links">
+                        <a href="#"><span class="icon-heart"></span></a>
+                        <a href="#"><span class="icon-eye"></span></a>
+                        <a href="#"><span class="icon-paper-clip"></span></a>
+                    </p>
+                    <p class="description">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // For Demo purposes only (show hover effect on mobile devices)
+        [].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
+            el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+        } );
+    </script>
+{% endblock body %}
+

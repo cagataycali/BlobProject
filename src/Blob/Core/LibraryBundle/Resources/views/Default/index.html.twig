@@ -1,0 +1,132 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Blob!{% endblock %}
+
+{% block css %}
+    <style type="text/css">
+        .material-switch > input[type="checkbox"] {
+            display: none;
+        }
+
+        .material-switch > label {
+            cursor: pointer;
+            height: 0px;
+            position: relative;
+            width: 40px;
+        }
+
+        .material-switch > label::before {
+            background: rgb(0, 0, 0);
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            content: '';
+            height: 16px;
+            margin-top: -8px;
+            position:absolute;
+            opacity: 0.3;
+            transition: all 0.4s ease-in-out;
+            width: 40px;
+        }
+        .material-switch > label::after {
+            background: rgb(255, 255, 255);
+            border-radius: 16px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            content: '';
+            height: 24px;
+            left: -4px;
+            margin-top: -8px;
+            position: absolute;
+            top: -4px;
+            transition: all 0.3s ease-in-out;
+            width: 24px;
+        }
+        .material-switch > input[type="checkbox"]:checked + label::before {
+            background: inherit;
+            opacity: 0.5;
+        }
+        .material-switch > input[type="checkbox"]:checked + label::after {
+            background: inherit;
+            left: 20px;
+        }
+    </style>
+{% endblock css %}
+
+{% block body %}
+    <section class="section swatch-beige-black has-top">
+        <div class="decor-top">
+            <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 C50 100 50 100 100 0  L100 100 0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <header class="section-header underline">
+                <h1 class="headline super hairline">{{ app.user.username }}</h1>
+                <p class="big">{{ app.user.profil.aciklama|default('') }}</p>
+                <small>{{ app.user.profil.webAdresi|default('') }}</small>
+            </header>
+        </div>
+    </section>
+
+    <section class="section swatch-black-beige has-top">
+        <div class="decor-top">
+            <svg class="decor" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 L50 100 L100 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container main">
+            <div class="container">
+                <div class="row ayarlar">
+                    <div class="col-lg-3 col-sm-12 col-xs-12">
+                        {#{{ app.user.ayar.bildirimler == null or app.user.ayar.bildirimler == 0 ? "Bildirimleriniz kapalı":"Bildirimleriniz açık!" }}#}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="box-round box-big">
+                                                <div class="box-dummy"></div>
+                                                <span class="box-inner">
+                                                    <a href="{{ path('admin_fotograf_') }}">
+                                                        <i class="fa fa-paperclip fa-2x"></i>
+                                                    </a>
+                                            </span>
+                                            </div>
+                                            <h4 class="text-center margin-bottom">
+                                                <a href="{{ path('admin_fotograf_') }}">Fotoğraflar</a>
+                                            </h4>
+                                            <br>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-round box-big">
+                                                <div class="box-dummy"></div>
+                                <span class="box-inner">
+                                                <i class="fa fa-bell fa-2x"></i>
+                                            </span>
+                                            </div>
+                                            <h4 class="text-center margin-bottom">
+                                                Bildirimler
+                                            </h4>
+                                            <br>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="box-round box-big">
+                                                <div class="box-dummy"></div>
+                                <span class="box-inner">
+                                                <i class="fa fa-comments fa-2x"></i>
+                                            </span>
+                                            </div>
+                                            <h4 class="text-center margin-bottom">
+                                                Konuşmalar
+                                            </h4>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}

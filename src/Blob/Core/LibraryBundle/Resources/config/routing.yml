@@ -1,0 +1,11 @@
+blob_core_library_admin_sistem-ayar_:
+    resource: "@BlobCoreLibraryBundle/Resources/config/routing/sistemayar.yml"
+    prefix:   /sistem-ayar/
+
+blob_core_library_admin_fotograf_:
+    resource: "@BlobCoreLibraryBundle/Resources/config/routing/fotograf.yml"
+    prefix:   /fotograf/
+
+blob_core_library_anasayfa:
+    path:     /
+    defaults: { _controller: BlobCoreLibraryBundle:Default:index }

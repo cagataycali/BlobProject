@@ -1,0 +1,47 @@
+anasayfa:
+    path:     /
+    defaults: { _controller: BlobCoreClientBundle:Main:main }
+
+client_fotograf_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/fotograf.yml"
+    prefix:   /fotograf
+
+fotograf-detay:
+    path:     /fotograf/{hash}
+    defaults: { _controller: BlobCoreClientBundle:Fotograf:fotografDetay }
+    options:
+            expose: true
+
+client_yorum_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/yorum.yml"
+    prefix:   /yorum/
+
+client_profil_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/profil.yml"
+    prefix:   /profil
+
+profil_detay:
+    path:     /profil/{username}
+    defaults: { _controller: BlobCoreClientBundle:Profil:profilDetay }
+    options:
+            expose: true
+
+client_arama_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/arama.yml"
+    prefix:   /arama/
+
+client_takip_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/takip.yml"
+    prefix:   /takip/
+
+client_mesaj_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/mesaj.yml"
+    prefix:   /mesaj/
+
+client_ayar_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/ayar.yml"
+    prefix:   /ayar/
+
+client_bildirim_mimari:
+    resource: "@BlobCoreClientBundle/Resources/config/routing/bildirim.yml"
+    prefix:   /bildirim/

@@ -1,0 +1,24 @@
+fotograf_begen:
+    path:     /begen/
+    defaults: { _controller: BlobCoreClientBundle:Fotograf:fotografBegen }
+    options:
+            expose: true
+
+fotograf_sil:
+    path:     /sil/
+    defaults: { _controller: BlobCoreClientBundle:Fotograf:fotografSil }
+    options:
+            expose: true
+
+sonsuz_kaydirma:
+    path:     /fotograflar/
+    defaults: { _controller: BlobCoreClientBundle:Fotograf:sonsuzKaydirma }
+    options:
+            expose: true
+
+foto-crop-yukle:
+    path:     /foto-crop-yukle/
+    defaults: { _controller: BlobCoreClientBundle:Fotograf:fotografEkle }
+    options:
+            expose: true
+

@@ -1,0 +1,11 @@
+ayar:
+    path:     /
+    defaults: { _controller: BlobCoreClientBundle:Ayar:ayar }
+    options:
+            expose: true
+
+ayar_guncelle:
+    path:     /guncelle/
+    defaults: { _controller: BlobCoreClientBundle:Ayar:ayarGuncelle }
+    options:
+            expose: true

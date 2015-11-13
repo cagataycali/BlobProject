@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Blob{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Blob!</title>
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/color-defaults.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-beige-black.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-black-beige.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-black-white.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-black-yellow.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-blue-white.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-green-white.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-red-white.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-white-black.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-white-blue.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-white-green.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-white-red.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/swatch-yellow-black.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/fonts.min.css') }}" media="screen">
+        <link rel="stylesheet" href="{{ asset('assets/css/foto-crop/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/foto-crop/cropper.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/foto-crop/tooltip.min.css') }}">
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/fotograf/css/set1.css') }}" />
+
+        {# Animation #}
+        <link rel="stylesheet" href="{{ asset('assets/js/font-awesome-animation.min.css') }}" media="screen">
+        <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" media="screen">
+        {# Animation #}
+
+        {# Fos js routing #}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+        {# Fos js routing #}
+
+
+        {% block css %}
+        {% endblock css %}
+
+    </head>
+    <body>
+
+    {# Navbar #}{% include ':Widgets:navbar.html.twig' %}{# Navbar #}
+
+    <div id="content" role="main">
+        {# Attach #}
+        {% include ':Widgets:attach.html.twig' %}
+        {% include ':Widgets:search.html.twig' %}
+        {% include ':Widgets:resimalani.html.twig' %}
+        {# Attach #}
+        {% block body %}
+
+        {% endblock body %}
+
+
+    </div>
+
+    {% block modal %}
+
+    {% endblock modal %}
+
+    <a class="go-top hex-alt" href="javascript:void(0)">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+
+    {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>#}
+
+
+    <script src="{{ asset('assets/js/packages.min.js') }}"></script>
+    <script src="{{ asset('assets/js/theme.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
+    {# Confrim #}
+    <script src="{{ asset('assets/js/jquery.confirm.js') }}"></script>
+    {# Confrim #}
+
+
+    {#&#123;&#35; crop scripts &#35;&#125;#}
+    {#<script src="{{ asset('assets/js/foto-crop/cropper.js') }}"></script>#}
+    {#<script src="{{ asset('assets/js/foto-crop/main.js') }}"></script>#}
+    {#<script src="{{ asset('assets/js/foto-crop/tooltip.min.js') }}"></script>#}
+    {#&#123;&#35; crop scripts &#35;&#125;#}
+
+
+
+
+    {# Parsley validate  #}
+    <script src='{{ asset('assets/parsley/parsley.js') }}'></script>
+    <script src="{{ asset('assets/parsley/tr.js') }}"></script>
+    {# Parsley validate  #}
+
+    <script type="text/javascript">
+        window.ParsleyValidator.setLocale('tr');
+    </script>
+
+
+
+    {# Base scripts #}
+    <script src="{{ asset('assets/js/base.js') }}"></script>
+    {# Base scripts #}
+
+
+    {% block javascript %}{% endblock %}
+
+    {#<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">#}
+        {#<div class="modal-dialog" role="document">#}
+            {#<div class="modal-content">#}
+                {#<div class="modal-header">#}
+                    {#<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+                    {#<h4 class="modal-title" id="myModalLabel">Modal title</h4>#}
+                {#</div>#}
+                {#<div class="modal-body">#}
+                    {##}
+                {#</div>#}
+               {##}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+    </body>
+</html>

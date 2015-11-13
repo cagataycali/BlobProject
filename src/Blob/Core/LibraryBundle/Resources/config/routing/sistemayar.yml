@@ -1,0 +1,30 @@
+admin_sistem-ayar_:
+    path:     /
+    defaults: { _controller: "BlobCoreLibraryBundle:SistemAyar:index" }
+
+admin_sistem-ayar__show:
+    path:     /{id}/show
+    defaults: { _controller: "BlobCoreLibraryBundle:SistemAyar:show" }
+
+admin_sistem-ayar__new:
+    path:     /new
+    defaults: { _controller: "BlobCoreLibraryBundle:SistemAyar:new" }
+
+admin_sistem-ayar__create:
+    path:     /create
+    defaults: { _controller: "BlobCoreLibraryBundle:SistemAyar:create" }
+    methods:  POST
+
+admin_sistem-ayar__edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BlobCoreLibraryBundle:SistemAyar:edit" }
+
+admin_sistem-ayar__update:
+    path:     /{id}/update
+    defaults: { _controller: "BlobCoreLibraryBundle:SistemAyar:update" }
+    methods:  [POST, PUT]
+
+admin_sistem-ayar__delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BlobCoreLibraryBundle:SistemAyar:delete" }
+    methods:  [POST, DELETE]

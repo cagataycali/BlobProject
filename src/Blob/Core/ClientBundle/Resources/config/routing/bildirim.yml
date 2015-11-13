@@ -1,0 +1,19 @@
+bildirim:
+    path:     /
+    defaults: { _controller: BlobCoreClientBundle:Bildirim:index }
+    options:
+            expose: true
+
+bildirim_goruldu:
+    path:     /bildirim-goruldu
+    defaults: { _controller: BlobCoreClientBundle:Bildirim:goruldu }
+    options:
+            expose: true
+
+
+tumunu_gor:
+    path:     /tumunu-gor
+    defaults: { _controller: BlobCoreClientBundle:Bildirim:tumunuGor }
+    options:
+            expose: true
+

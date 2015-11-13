@@ -1,0 +1,5 @@
+mesaj:
+    path:     /
+    defaults: { _controller: BlobCoreClientBundle:Mesaj:index}
+    options:
+            expose: true

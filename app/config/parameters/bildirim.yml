@@ -1,0 +1,18 @@
+parameters:
+
+    # iOS Bildirim Parametreleri
+    apns_server: server #Dev: ssl://gateway.sandbox.push.apple.com:2195 Prod: ssl://gateway.push.apple.com:2195
+    passphrase: pass
+    pem: pem
+
+    # Android Bildirim Parametreleri
+    gcm_url: url
+    project_id: project_id
+    api_key: key
+
+
+    kim: kim
+    kime: kime
+    sablon: sablon
+    fotograf: fotograf
+    em: em

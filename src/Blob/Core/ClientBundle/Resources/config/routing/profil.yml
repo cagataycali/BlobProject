@@ -1,0 +1,19 @@
+profil:
+    path:     /
+    defaults: { _controller: BlobCoreClientBundle:Profil:profil}
+    options:
+            expose: true
+
+fotograflarim:
+    path:     /fotograflarim/
+    defaults: { _controller: BlobCoreClientBundle:Profil:fotograflarim}
+    options:
+            expose: true
+
+
+profil_sonsuz_kaydirma:
+    path:     /profil-sonsuz-kaydirma/
+    defaults: { _controller: BlobCoreClientBundle:Profil:profilSonsuzFotograf }
+    options:
+            expose: true
+
