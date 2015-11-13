@@ -27,3 +27,8 @@ Kodlarla oynayın, pull requestlerinizi bekliyorum.
 http://localhost/BlobProject/web/app_dev.php
 
 ![Ekran görüntüsü](http://s16.postimg.org/tvi4iqaut/Ekran_Resmi_2015_11_13_23_32_25.png)
+
+
+#Dipnot : 
+
+x Dakika önce.. yazısının türkçeleştirilmesi composer ile gidip gelirken arada kayboluyor,ingilizce olarak görülmesi bilinen issuedir.
