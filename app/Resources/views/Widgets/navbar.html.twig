@@ -12,7 +12,8 @@
                     <li ><a href="{{ path('bildirim') }}"> <span style="color: {% if app.user.bildirimler|length > 0 and app.user.bildirimler|last.durum == 0 %}darkred{% else %}#000{% endif %};" class="fa fa-{% if app.user.bildirimler|length > 0 and app.user.bildirimler|last.durum == 0 %}bell animated{% else %}bell-o animated-hover{% endif %} fa-2x faa-ring "></span> </a></li>  {# Bildirimler varsa ve son bildirim okunmamışsa! #}
 
 
-                    <li ><a href="{{ path('mesaj') }}"> <span class="fa fa-comments-o fa-2x faa-tada animated-hover"></span> </a></li> {# Mesaj geldiğinde comment olacak. #}
+                    <li ><a > <span class="fa fa-comments-o fa-2x faa-tada animated-hover" disabled="disabled"></span> </a></li> {# Mesaj geldiğinde comment olacak. #}
+                    {#<li ><a href="{{ path('mesaj') }}"> <span class="fa fa-comments-o fa-2x faa-tada animated-hover"></span> </a></li> &#123;&#35; Mesaj geldiğinde comment olacak. &#35;&#125;#}
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-navicon fa-2x faa-pulse animated-hover"></span></a>
                         <ul class="dropdown-menu">
